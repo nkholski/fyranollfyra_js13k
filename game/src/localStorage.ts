@@ -1,11 +1,11 @@
 import { addTrophy } from "./game/trophy";
-import { initLevelSelect } from "./levelSelect/levelSelect";
 import { Level } from "./interfaces";
 
 declare let levels: Level[];
 
 export const getProgress = (i) => {
-  const stored = localStorage.getItem("FyraNollFyra");
+  const stored =
+    localStorage.getItem("FyraNollFyra") || localStorage.getItem("get404");
   if (stored) {
     return JSON.parse(stored)[i];
   } else {
