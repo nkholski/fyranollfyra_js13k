@@ -1,7 +1,7 @@
 import { LevelStub } from "./interfaces";
 export default {
   seed: 3,
-  text: "Sorry. Didn't have time to make last levels hard.",
+  text: "x",
   walls: [{ x: -1, y: 2, w: 16, h: 4 }],
   bricks: [
     {
