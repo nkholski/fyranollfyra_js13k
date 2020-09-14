@@ -36,8 +36,22 @@ decodedLevels.forEach((decoded, li) => {
     }
   });
 
+  const taken = [];
+  for (let x = 0; x < 15; x++) {
+    taken[x] = [];
+    for (let y = 0; y < 8; y++) {
+      taken[x][y] = false;
+    }
+  }
+
   decoded.bricks.forEach((brick, bi) => {
     const lbrick = level.bricks[bi];
+    if (taken[brick.ox][brick.oy]) {
+      console.log("TAKEN!", li, brick.ox, brick.oy, level.text);
+      process.exit(0);
+    }
+    taken[brick.ox][brick.oy] = true;
+
     if (
       brick.ox != lbrick.ox ||
       brick.oy != lbrick.oy ||

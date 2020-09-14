@@ -1,7 +1,7 @@
 import { LevelStub } from "./interfaces";
 export default {
   seed: 3,
-  text: "x",
+  text: "xxx",
   walls: [{ x: -1, y: 2, w: 16, h: 4 }],
   bricks: [
     {
@@ -18,7 +18,7 @@ export default {
     },
     {
       content: "7",
-      ox: 2,
+      ox: 3,
       oy: 1,
       odragabble: true,
     },

@@ -28,7 +28,7 @@ export default {
     },
     {
       content: "5",
-      ox: 3,
+      ox: 4,
       oy: 7,
       odragabble: true,
     },
