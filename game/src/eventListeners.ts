@@ -15,7 +15,7 @@ declare let state: GameStates;
 declare let dialogText: string;
 declare let buttons: any[];
 
-//let triedFullscreen = false;
+let triedFullscreen = false;
 
 const touchToOffset = (e) => {
   const { target, targetTouches } = e;
@@ -29,32 +29,36 @@ const touchToOffset = (e) => {
   };
 };
 
-// const openFullscreen = () => {
-//   if (triedFullscreen) {
-//     return;
-//   }
-//   triedFullscreen = true;
-//   document.body.requestFullscreen();
+const openFullscreen = () => {
+  if (triedFullscreen) {
+    return;
+  }
+  triedFullscreen = true;
+  if (!confirm("Switch to fullscreen for a better touch experience?")) {
+    return;
+  }
 
-//   if (canvas.requestFullscreen) {
-//     canvas.requestFullscreen();
-//     // @ts-ignore
-//   } else if (canvas.mozRequestFullScreen) {
-//     /* Firefox */
-//     // @ts-ignore
-//     canvas.mozRequestFullScreen();
-//     // @ts-ignore
-//   } else if (canvas.webkitRequestFullscreen) {
-//     /* Chrome, Safari & Opera */
-//     // @ts-ignore
-//     canvas.webkitRequestFullscreen();
-//     // @ts-ignore
-//   } else if (canvas.msRequestFullscreen) {
-//     /* IE/Edge */
-//     // @ts-ignore
-//     canvas.msRequestFullscreen();
-//   }
-// };
+  document.body.requestFullscreen();
+
+  if (canvas.requestFullscreen) {
+    canvas.requestFullscreen();
+    // @ts-ignore
+  } else if (canvas.mozRequestFullScreen) {
+    /* Firefox */
+    // @ts-ignore
+    canvas.mozRequestFullScreen();
+    // @ts-ignore
+  } else if (canvas.webkitRequestFullscreen) {
+    /* Chrome, Safari & Opera */
+    // @ts-ignore
+    canvas.webkitRequestFullscreen();
+    // @ts-ignore
+  } else if (canvas.msRequestFullscreen) {
+    /* IE/Edge */
+    // @ts-ignore
+    canvas.msRequestFullscreen();
+  }
+};
 
 export const startListenders = () => {
   let position = { x: 0, y: 0 };
@@ -101,7 +105,7 @@ export const startListenders = () => {
 
   canvas.onmouseup = (e) => mouseUp();
   //@ts-ignore
-  canvas.ontouchend = (e) => mouseUp();
+  canvas.ontouchend = (e) => openFullscreen() + mouseUp();
 
   // INTERACTION CANCEL
   canvas.onmouseout = () => cancelMove();
