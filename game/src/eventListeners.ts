@@ -15,7 +15,7 @@ declare let state: GameStates;
 declare let dialogText: string;
 declare let buttons: any[];
 
-let triedFullscreen = false;
+//let triedFullscreen = false;
 
 const touchToOffset = (e) => {
   const { target, targetTouches } = e;
@@ -29,32 +29,32 @@ const touchToOffset = (e) => {
   };
 };
 
-const openFullscreen = () => {
-  if (triedFullscreen) {
-    return;
-  }
-  triedFullscreen = true;
-  document.body.requestFullscreen();
+// const openFullscreen = () => {
+//   if (triedFullscreen) {
+//     return;
+//   }
+//   triedFullscreen = true;
+//   document.body.requestFullscreen();
 
-  if (canvas.requestFullscreen) {
-    canvas.requestFullscreen();
-    // @ts-ignore
-  } else if (canvas.mozRequestFullScreen) {
-    /* Firefox */
-    // @ts-ignore
-    canvas.mozRequestFullScreen();
-    // @ts-ignore
-  } else if (canvas.webkitRequestFullscreen) {
-    /* Chrome, Safari & Opera */
-    // @ts-ignore
-    canvas.webkitRequestFullscreen();
-    // @ts-ignore
-  } else if (canvas.msRequestFullscreen) {
-    /* IE/Edge */
-    // @ts-ignore
-    canvas.msRequestFullscreen();
-  }
-};
+//   if (canvas.requestFullscreen) {
+//     canvas.requestFullscreen();
+//     // @ts-ignore
+//   } else if (canvas.mozRequestFullScreen) {
+//     /* Firefox */
+//     // @ts-ignore
+//     canvas.mozRequestFullScreen();
+//     // @ts-ignore
+//   } else if (canvas.webkitRequestFullscreen) {
+//     /* Chrome, Safari & Opera */
+//     // @ts-ignore
+//     canvas.webkitRequestFullscreen();
+//     // @ts-ignore
+//   } else if (canvas.msRequestFullscreen) {
+//     /* IE/Edge */
+//     // @ts-ignore
+//     canvas.msRequestFullscreen();
+//   }
+// };
 
 export const startListenders = () => {
   let position = { x: 0, y: 0 };
@@ -91,15 +91,17 @@ export const startListenders = () => {
     e.preventDefault;
     mouseMove({ x: e.offsetX, y: e.offsetY });
   }; //  e.prevent
-  canvas.addEventListener("touchmove", (e)=>mouseMove(touchToOffset(e)), { passive: false })
-  
+  canvas.addEventListener("touchmove", (e) => mouseMove(touchToOffset(e)), {
+    passive: false,
+  });
+
   // INTERACTION EXECUTE
   const mouseUp = () =>
     isPortrait() ? null : executeMove(position.x, position.y);
 
   canvas.onmouseup = (e) => mouseUp();
   //@ts-ignore
-  canvas.ontouchend = (e) => openFullscreen() + mouseUp();
+  canvas.ontouchend = (e) => mouseUp();
 
   // INTERACTION CANCEL
   canvas.onmouseout = () => cancelMove();

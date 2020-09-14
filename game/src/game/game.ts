@@ -99,11 +99,11 @@ export const gameUpdate = () => {
     won = true;
     const nextLevel = wonLevel(level);
     if (!nextLevel || nextLevel.section !== level.section) {
-      dialogText = finishSectionStrings[level.section]
+      dialogText = finishSectionStrings[level.section];
       setTimeout(() => initLevelSelect(), 5000);
     } else {
       setTimeout(() => reset(nextLevel), 2000);
-    } 
+    }
   }
 };
 
@@ -138,25 +138,30 @@ export const hint = () => {
   setTimeout(() => (hasHint = true), coil ? 3e3 : 3e4);
 
   let tries = 0;
+  let tries2 = 0;
   let sI;
-  do {
-    sI = Math.round(2 * Math.random());
-  } while (hinted[sI] && tries++ < 99);
-  hinted[sI] = true;
-  level.bricks.forEach((brick) => {
-    if (brick.ox >= sI * 5 && brick.ox < (sI + 1) * 5) {
-      const crash = level.bricks.find(
-        (b) => b.gx === brick.ox && b.gy === brick.oy
-      );
-      if (crash) {
-        crash.gx = brick.gx;
-        crash.gy = brick.gy;
-      }
+  let didMove = false;
+  while (!didMove && tries2++ < 99) {
+    do {
+      sI = Math.round(2 * Math.random());
+    } while (hinted[sI] && tries++ < 99);
+    hinted[sI] = true;
+    level.bricks.forEach((brick) => {
+      if (brick.ox >= sI * 5 && brick.ox < (sI + 1) * 5) {
+        const crash = level.bricks.find(
+          (b) => b.gx === brick.ox && b.gy === brick.oy
+        );
+        if (crash) {
+          crash.gx = brick.gx;
+          crash.gy = brick.gy;
+        }
 
-      brick.gx = brick.ox;
-      brick.gy = brick.oy;
-      brick.dragabble = false;
-    }
-  });
+        brick.gx = brick.ox;
+        brick.gy = brick.oy;
+        brick.dragabble = false;
+        didMove = true;
+      }
+    });
+  }
   getSequence();
 };

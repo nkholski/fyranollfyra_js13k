@@ -94,7 +94,7 @@ export const moved = (offsetX, offsetY) => {
 
 export const executeMove = (offsetX, offsetY) => {
   mouseIsDown = false;
-  if (!numberToMove) {
+  if (!numberToMove || won) {
     return;
   }
 

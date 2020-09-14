@@ -11,14 +11,8 @@ export default {
       odragabble: true,
     },
     {
-      content: "0",
-      ox: 2,
-      oy: 2,
-      odragabble: true,
-    },
-    {
       content: "2",
-      ox: 3,
+      ox: 2,
       oy: 2,
       odragabble: true,
     },
@@ -28,16 +22,9 @@ export default {
       oy: 3,
       odragabble: true,
     },
-
     {
       content: "6",
       ox: 1,
-      oy: 3,
-      odragabble: true,
-    },
-    {
-      content: "9",
-      ox: 2,
       oy: 3,
       odragabble: true,
     },

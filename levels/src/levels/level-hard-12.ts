@@ -91,7 +91,7 @@ export default {
       odragabble: true,
     },
     {
-      content: "3",
+      content: "2",
       ox: 7,
       oy: 4,
       odragabble: true,
