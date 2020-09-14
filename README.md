@@ -1,39 +1,25 @@
-## Purpose
+# FyraNollFyra - JS13kGames.com contribution
 
-The purpose of this project is to help make building [JS13k](https://js13kgames.com/) projects easier for folks who are familiar with the JavaScript ecosystem but don't want to go through the hassle of setting up a JS13k-specific build environment. The bulk of this project is a [Webpack](https://webpack.js.org/) config that does the following: 
+FyraNollFyra is a mathematical puzzle game where the objective is to spell out 4, 0 and 4 in three containers. To do so you need to move numbers and operators until the equations in the containers reach their desired result.
 
-- Transpiles TypeScript (if any)
-- Minifies the resulting JavaScript
-- Inlines the JavaScript into an `index.html` file (in production)
-- Zips the `index.html` file
-- Checks that the zip file is under 13k
-- Runs `webpack-bundle-analyzer`
+A total of six trophies are hidden throughout the three sections of levels and the tutorial.
 
-## Requirements
+There is a hint function to assist you if you get stuck. Coil subscribers get the 10th of the normal cooldown until the hint function get ready again after use.
 
-The commands assume [Yarn](https://yarnpkg.com/en/docs/install) is installed.
+The game is adapted for mobile devices. To achieve the best result on tablet or mobil, allow the game to be installed on the start screen as a Progressive Web App (PWA).
 
-## Commands
+Fyra noll fyra means four zero four in Swedish.
 
-### `yarn install`
+![Screenshot](https://github.com/nkholski/fyranollfyra_js13k/blob/master/submission/bigicon.png "Screenshot")
 
-Installs dependencies.
+### About the repository
 
-### `yarn start`
+The project is built under time pressure and with a lot of short cuts and last minute compromises. Be warned, it's of poor quality, best practises ignored and before I would touch it to pick up development I would spend a day or two to clean it.
 
-Starts [webpack-dev-server](https://webpack.js.org/configuration/dev-server/) at `http://0.0.0.0:8080`. You should be able to access the server on your mobile device from your home network by going to your computer's IP address (e.g. `http://192.168.0.2:8080`).
+## js13kGames
 
-### `yarn build`
+Js13kGames is a JavaScript coding competition for HTML5 Game Developers. The fun part of the compo is the file size limit set to 13 kilobytes. The competition started at 13:00 CEST, 13th August and ended at 13:00 CEST, 13th September 2020. Theme for this year was 404. Visit [js13kgames.com](https://js13kgames.com/)
 
-Builds, minifies, and inlines the game to `./dist/index.html`. This command also runs [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer), and places the report in `./dist/report.html`. This report may be handy in figuring out which of your source files is putting you over the edge of 13k.
+## Template
 
-### `yarn party`
-
-Builds, minifies, inlines, and zips the game to `./zipped/game.zip`. This command finishes with a log message letting you know if the zip file is under 13k.
-
-## Notes
-
-- Put your TS or JS in `src/index.ts`
-- Put your css in `src/index.html`
-- Put your images or other assets in `assets/`
-- This starter pulls in [this plugin](https://github.com/facebook/create-react-app/blob/edc671eeea6b7d26ac3f1eb2050e50f75cf9ad5d/packages/react-dev-utils/InlineChunkHtmlPlugin.js#L10) from Facebook's [create-react-app](https://reactjs.org/docs/create-a-new-react-app.html) to inline the JS into the HTML file.
+The project is based by a template project with typescript support and more built by @mtmckenna (https://github.com/mtmckenna/js13k-webpack-typescript-starter-party)
