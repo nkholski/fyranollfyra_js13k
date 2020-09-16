@@ -52,17 +52,17 @@ document.body.appendChild(canvas);
 export const isPortrait = () => window.innerHeight > window.innerWidth;
 
 setTimeout(() => {
-addTrophy("🕓", "Time well spent", "Five great minutes of your life went into this game", true);
-},3e5);
+  addTrophy(
+    "🕓",
+    "Time well spent",
+    "Five great minutes of your life went into this game",
+    true
+  );
+}, 3e5);
 
 document.addEventListener(
   "DOMContentLoaded",
   () => {
-    // confirm(
-    //   "Photosensitive seizure warning\nClick OK for full effects, cancel to skip flashes."
-    // );
-    //@ts-ignore
-    (window as any).coil =  document.monetization && document.monetization.state === "started";
     recalcConstants();
     global.levels = levelDecoder();
     startListenders();

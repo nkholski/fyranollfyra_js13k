@@ -21,7 +21,6 @@ import {
 } from "./interaction/interaction";
 
 declare let buttons: any[];
-declare let coil: boolean;
 declare let canvas: HTMLCanvasElement;
 declare const ctx: CanvasRenderingContext2D;
 declare let bgCanvas: HTMLCanvasElement;
@@ -128,6 +127,9 @@ export const reset = (level: Level) => {
 };
 
 export const hint = () => {
+  const coil =
+    //@ts-ignore
+    document.monetization && document.monetization.state === "started";
   if (!hasHint) {
     dialogText = coil
       ? "Your Coil subscription will recharge a hint within 3 seconds."
