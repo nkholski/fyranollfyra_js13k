@@ -10,6 +10,8 @@ The game is adapted for mobile devices. To achieve the best result on tablet or 
 
 Fyra noll fyra means four zero four in Swedish.
 
+[Play FyraNollFyra at JS13k](https://js13kgames.com/entries/fyranollfyra)
+
 ![Screenshot](https://github.com/nkholski/fyranollfyra_js13k/blob/master/submission/bigicon.png "Screenshot")
 
 ### About the repository
