@@ -4,15 +4,9 @@ Participating in a game jam is exhausting and I actually decided not to particip
 
 Before you read this, you would probably want to try it out: [FyraNollFyra](https://js13kgames.com/entries/fyranollfyra)
 
-<figure class="image">
-  <img src="https://github.com/nkholski/fyranollfyra_js13k/blob/master/other/fyranollfyra-1st-night.png" alt="Screenshot - First day">
-  <figcaption>Screenshot after first sitting. The numbers are random which means that it might be unsolvable. I think it's great to get a working basic version asap in the development if possible. (The numbers on the board flashes randomly until it stabilizes on 4, 0 or 4. That was a horrible idea).</figcaption>
-</figure>
+<img src="https://github.com/nkholski/fyranollfyra_js13k/blob/master/other/fyranollfyra-1st-night.png" alt="Screenshot - First day">_Screenshot after first sitting. The numbers are random which means that it might be unsolvable. I think it's great to get a working basic version asap in the development if possible. (The numbers on the board flashes randomly until it stabilizes on 4, 0 or 4. That was a horrible idea)._
 
-<figure class="image">
-  <img src="https://github.com/nkholski/fyranollfyra_js13k/blob/master/submission/bigicon.png" alt="Screenshot - Final">
-  <figcaption>Final product :-)</figcaption>
-</figure>
+<img src="https://github.com/nkholski/fyranollfyra_js13k/blob/master/submission/other/fyranollfyra-final.png" alt="Screenshot - Final">_Final product :-)_
 
 ## 1. A typescript template to start with
 
@@ -46,17 +40,21 @@ _First four levels (the tutorial) separated with double space:_
 
 `2(%.)%2*% Move the numbers to make the boxes say 4, 0 and 4. " 2#%.\$%.%%.(%2)%.*% 400 is big. 004 is perfect. Rearrange to reach 4 0 4. "'!'5 0"%0#%8$%#(%")%4*%-(&&)&-('8,%%-%/.% Use plus and minus to reach 4,0,4. The walls block numbers! #'!'5 $"%-#%-$%$%%9(%0)%0\*%9,%0-%0.%9/% Double negative is positive (--4 equals 4).`
 
-## 5. Geometrical graphics
+## 5. Preparing the board areas
+
+Bricks cannot move past walls. Instead of creating some kind of collision detection I define numbered areas and stick it to the bricks. A brick can never change area. The areas are defined when a level is loaded with a method resembling to a fill bucket in a paint program. The method will find first square without defined area (a zero) and plant a area number, then recursively allow the number to grow to neighbouring zeros that isn't behind a wall until there is no change. If there is zeros left it will increase the area number, find a zero and repeat the process until the whole board is filled with area numbers above zero.
+
+## 6. Geometrical graphics
 
 Images, even indexed and optimized in every thinkable way, costs a lot of bytes. All graphics in FyraNollFyra is drawn using the html5 canvas api using rectangles and lines. For an example the dialogues, containers, buttons and bricks in the game are all rendered with a generic “shadowbox” function that reduces to less than 500 bytes when zipped, including code to make it scalable and possible to colorize.
 
-I created two patterns on separate canvases to reuse. One is a “jitter” which is filled with black squares of random opacity between 0 and 0.2. This is drawn on the play field backgrounds and the backdrop of the level selection screen. I also use the jitter to create sparkling effects when a number is correct or the board is won. This is achieved by pasting the pattern canvas on the destination canvas with a repeated random offset. I also created a wall pattern (yellow and black stripes) that is applied on the lines on the game screen.
+I created two patterns on separate canvases to reuse. One is a “jitter” which is filled with black squares of random opacity between 0 and 0.2. This is drawn on the play field backgrounds and the backdrop of the level selection screen. I also use the jitter to create sparkling effects when a number is correct or the board is won. This is achieved by pasting the pattern canvas on the destination canvas with a repeated random offset. I also created a wall pattern (yellow and black stripes) that is applied on the lines on the game screen. A wall surrounding squares without bricks is filled with the pattern.
 
 One neat trick is that the game background accepts a canvas context as an optional argument. This is used by the level selection screen to render screens to a temporary canvas and scale them down as level miniatures.
 
 In the end I actually had room for images. With almost no time left and the bytes to spare I decided to make a simple title text, encode it as a base64 string and paste it into the level selection screen.
 
-## 6. The Game loop
+## 7. The Game loop
 
 The game boots up with a continous main game loop called each frame. The update function checks for device orientation and based on which state the game is in it will call either the level selection or the game update methods. The state update methods’ main responsibility is to keep the canvas graphics updated and in the case of the game update method it checks the winning conditions.
 
@@ -64,6 +62,12 @@ Both scenes have an init method that prepares static parts of the graphics (i.e.
 
 Input is based on standard html-events (i.e. onmousedown) that will set positions for bricks or call methods of the current screen (such as load the level the mouse is currently hovering).
 
-## Conclusion
+## 8. Regrets
+
+I know that there are a lot to improve, even within the 13kb limit. One example is that it looks crappy sometimes when bricks are prevented to pass borders. I do regret a little that I put bytes and effort into making the game a PWA that I think few or none even will notice. The PWA icon is huge (1115 bytes) and is even broken for some reason.
+
+I made a conscious decision not to include any sound. I couldn't see that the game would improve from 8-bit-style sounds, rather the opposite. However, when the voting started I realized 1) I will always lose against the other game, possibly even if it only has a few annoying beeps 2) That I could actually have added some GUI sound effects, placing brick effects and a jingle when a number is correct or a level is beaten.
+
+## 9. Conclusion
 
 To sum things up I think that JS13k is an excellent opportunity of exploratory learning. The definite deadline and the limited maximum size help you to avoid going bananas with ideas and add features until you lose control. Writing small code don´t encourage good practises on scalability or readability, but it encourages you to try new things and to get to know javascript a bit better. You can try things you would never do professionally, but I’m certain that the experiences of this benefit the ability to creativity development.
