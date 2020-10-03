@@ -4,9 +4,9 @@ Participating in a game jam is exhausting and I actually decided not to particip
 
 Before you read this, you would probably want to try it out: [FyraNollFyra](https://js13kgames.com/entries/fyranollfyra)
 
-<img src="https://github.com/nkholski/fyranollfyra_js13k/blob/master/other/fyranollfyra-1st-night.png" alt="Screenshot - First day">_Screenshot after first sitting. The numbers are random which means that it might be unsolvable. I think it's great to get a working basic version asap in the development if possible. (The numbers on the board flashes randomly until it stabilizes on 4, 0 or 4. That was a horrible idea)._
+<img src="https://github.com/nkholski/fyranollfyra_js13k/blob/master/other/fyranollfyra-final.png" alt="Screenshot - Final">Final version :-)
 
-<img src="https://github.com/nkholski/fyranollfyra_js13k/blob/master/submission/other/fyranollfyra-final.png" alt="Screenshot - Final">_Final product :-)_
+<img src="https://github.com/nkholski/fyranollfyra_js13k/blob/master/other/fyranollfyra-1st-night.png" alt="Screenshot - First day">_Screenshot after first sitting. The numbers are random which means that it might be unsolvable. I think it's great to get a working basic version asap in the development if possible. (The numbers on the board flashes randomly until it stabilizes on 4, 0 or 4. That was a horrible idea)._
 
 ## 1. A typescript template to start with
 
